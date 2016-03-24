@@ -2,7 +2,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 // set up ======================================================================
 // get all the tools we need
-var config   = require('./config/config.js');
+var config   = require('./config/config');
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 3000;
@@ -15,7 +15,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-var configDB = require('./config/database.js');
+var configDB = require('./config/database');
 
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
