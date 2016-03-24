@@ -1,6 +1,8 @@
 // config/database.js
+var config = require('./config');
+
 module.exports = {
 
-    'url' : 'mongodb://localhost/bk-auth-test-scotch'
+	'url' : config.db
 
 };

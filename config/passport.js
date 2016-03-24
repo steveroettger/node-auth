@@ -4,10 +4,10 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 
 // load up the user model
-var User       = require('../app/models/user');
+var User = require('../app/models/user.server.model');
 
 // load the auth variables
-var configAuth = require('./auth'); // use this one for testing
+var config   = require('./config');
 
 module.exports = function(passport) {
 
@@ -125,9 +125,9 @@ module.exports = function(passport) {
     // =========================================================================
     passport.use(new FacebookStrategy({
 
-        clientID        : configAuth.facebookAuth.clientID,
-        clientSecret    : configAuth.facebookAuth.clientSecret,
-        callbackURL     : configAuth.facebookAuth.callbackURL,
+        clientID        : config.facebookAuth.clientID,
+        clientSecret    : config.facebookAuth.clientSecret,
+        callbackURL     : config.facebookAuth.callbackURL,
         profileFields: ["emails", "displayName", "name"],
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
 
@@ -202,9 +202,9 @@ module.exports = function(passport) {
     // =========================================================================
     passport.use(new GoogleStrategy({
 
-        clientID        : configAuth.googleAuth.clientID,
-        clientSecret    : configAuth.googleAuth.clientSecret,
-        callbackURL     : configAuth.googleAuth.callbackURL,
+        clientID        : config.googleAuth.clientID,
+        clientSecret    : config.googleAuth.clientSecret,
+        callbackURL     : config.googleAuth.callbackURL,
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
 
     },
